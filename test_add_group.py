@@ -9,7 +9,8 @@ import unittest, time, re
 
 class test_add_group(unittest.TestCase):
     def setUp(self):
-        self.wd = webdriver.Chrome()
+        # self.wd = webdriver.Chrome()
+        self.wd = webdriver.Firefox(firefox_binary=r'C:/Program Files/Mozilla Firefox/firefox.exe')
         self.wd.implicitly_wait(30)
 
 
