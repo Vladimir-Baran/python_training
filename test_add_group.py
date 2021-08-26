@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from group import Group
+from group import Login
 import unittest
 
 class test_add_group(unittest.TestCase):
@@ -15,7 +16,7 @@ class test_add_group(unittest.TestCase):
     def test_add_group(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd, username="admin", password="secret")
+        self.login(wd, Login(username="admin", password="secret"))
         self.open_group_page(wd)
         self.create_group(wd, Group(name="test", header="second", footer="first"))
         self.return_to_groups_page(wd)
@@ -25,7 +26,7 @@ class test_add_group(unittest.TestCase):
     def test_add_empty_group(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd, username="admin", password="secret")
+        self.login(wd, Login(username="admin", password="secret"))
         self.open_group_page(wd)
         self.create_group(wd, Group(name="", header="", footer=""))
         self.return_to_groups_page(wd)
@@ -55,12 +56,12 @@ class test_add_group(unittest.TestCase):
     def open_group_page(self, wd):
         wd.find_element_by_link_text("groups").click()
 
-    def login(self, wd, username, password):
+    def login(self, wd, login):
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys(username)
+        wd.find_element_by_name("user").send_keys(login.username)
         wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys(password)
+        wd.find_element_by_name("pass").send_keys(login.password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def open_home_page(self, wd):
