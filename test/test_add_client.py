@@ -5,13 +5,6 @@ from model.client import New_client
 from model.group import Login
 
 
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
-
-
 def test_add_new_client(app):
     app.session.login(Login(username="admin", password="secret"))
     app.client.add_new(New_client(firstname="Vladimir", middlename="Baran", lastname="Test", nickname="QA",
