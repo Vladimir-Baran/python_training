@@ -1,10 +1,3 @@
-class Login:
-
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-
-
 class New_client:
 
     def __init__(self, firstname, middlename, lastname, nickname, company, address, home_number, bday, bmonth,
