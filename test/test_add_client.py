@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-from group import Login
-from client import New_client
 import pytest
-from application import Application
-from client import New_client
-from group import Login
+from fixture.application import Application
+from model.client import New_client
+from model.group import Login
 
 
 @pytest.fixture()
