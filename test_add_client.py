@@ -14,13 +14,12 @@ class Test(unittest.TestCase):
         self.wd.implicitly_wait(30)
 
 
-    def test_(self):
-        wd = self.enter_site()
+    def test_add_new_client(self):
+        wd = self.wd
         self.login(wd, Login(username="admin", password="secret"))
         self.add_new_client(wd, New_client(firstname="Vladimir", middlename="Baran", lastname="Test", nickname="QA",
                                            company="Bell", address="Street", home_number="79999999999", bday="1",
                                            bmonth="April", byear="1991", group="test"))
-        self.back_start_page(wd)
         self.logout(wd)
 
     def logout(self, wd):
@@ -59,8 +58,10 @@ class Test(unittest.TestCase):
         wd.find_element_by_name("new_group").click()
         Select(wd.find_element_by_name("new_group")).select_by_visible_text(client.group)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.back_start_page(wd)
 
     def login(self, wd, login):
+        self.enter_site()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(login.username)
