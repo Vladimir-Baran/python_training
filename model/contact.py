@@ -1,7 +1,7 @@
-class New_client:
+class Contact:
 
     def __init__(self, firstname, middlename, lastname, nickname, company, address, home_number, bday, bmonth,
-                       byear, group):
+                       byear):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -12,4 +12,13 @@ class New_client:
         self.bday = bday
         self.bmonth = bmonth
         self.byear = byear
-        self.group = group
+
+class Edit_contact:
+
+    def __init__(self, company, mobile, fax, address, home_number):
+
+        self.company = company
+        self.address = address
+        self.home_number = home_number
+        self.mobile = mobile
+        self.fax = fax
