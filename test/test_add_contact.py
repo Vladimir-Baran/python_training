@@ -2,7 +2,7 @@
 import pytest
 from fixture.application import Application
 from model.contact import Contact
-from model.group import Login
+from model.login import Login
 
 
 def test_add_new_contact(app):

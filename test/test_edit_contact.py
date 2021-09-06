@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from model.contact import Edit_contact
-from model.group import Login
+from model.login import Login
 
 
 def test_edit_contact(app):

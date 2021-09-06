@@ -1,4 +1,4 @@
-from model.group import Login
+from model.login import Login
 
 
 def test_del(app):

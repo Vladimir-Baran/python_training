@@ -6,13 +6,13 @@ class Contact:
     def __init__(self, app):
         self.app = app
 
-    def back_start_page(self):
+    def open_start_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
 
     def add_new(self, client):
         wd = self.app.wd
-        self.back_start_page()
+        self.open_start_page()
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -40,11 +40,12 @@ class Contact:
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(client.byear)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-        self.back_start_page()
+        self.open_start_page()
 
     def edit_first_contact(self, client):
         wd = self.app.wd
-        self.back_start_page()
+        self.open_start_page()
+        wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//td[8]/a/img").click()
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
@@ -57,13 +58,14 @@ class Contact:
         wd.find_element_by_name("home").clear()
         wd.find_element_by_name("home").send_keys(client.home_number)
         wd.find_element_by_name("update").click()
-        self.back_start_page()
+        self.open_start_page()
 
     def delete_first(self):
         wd = self.app.wd
+        self.open_start_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
-        self.back_start_page()
+        self.open_start_page()
 
 
