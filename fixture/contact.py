@@ -7,7 +7,8 @@ class ContactHelper:
 
     def open_start_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("Send e-Mail")) > 0):
+            wd.find_element_by_link_text("home").click()
 
     def add_new(self, new_client):
         wd = self.app.wd
@@ -15,7 +16,6 @@ class ContactHelper:
         wd.find_element_by_link_text("add new").click()
         self.change_data(new_client)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-        self.open_start_page()
 
     def change_contact_field_value(self, field_name, text):
         wd = self.app.wd
@@ -48,7 +48,6 @@ class ContactHelper:
         wd.find_element_by_xpath("//td[8]/a/img").click()
         self.change_data(client)
         wd.find_element_by_name("update").click()
-        self.open_start_page()
 
     def delete_first(self):
         wd = self.app.wd
@@ -56,7 +55,6 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
-        self.open_start_page()
 
     def count_contact(self):
         wd = self.app.wd
