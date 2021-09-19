@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 from model.group import Group
-from model.login import Login
 
 
 def test_add_group(app):

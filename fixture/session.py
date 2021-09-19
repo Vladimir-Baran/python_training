@@ -21,7 +21,6 @@ class SessionHelper:
 
     def ensure_logout(self):
         wd = self.app.wd
-        # if len(wd.find_elements_by_link_text("Logout")) > 0:
         if self.is_logged_in():
             self.logout()
 
