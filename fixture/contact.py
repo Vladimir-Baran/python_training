@@ -7,7 +7,9 @@ class ContactHelper:
 
     def open_start_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("Send e-Mail")) > 0):
+        if not (wd.current_url.endswith("/addressbook/")
+                and len(wd.find_elements_by_name("searchstring")) > 0):
+            # для уточнения я мог написать find_elements_by_link text("Send e-Mail")
             wd.find_element_by_link_text("home").click()
 
     def add_new(self, new_client):
