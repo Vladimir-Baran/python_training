@@ -1,9 +1,10 @@
 from geom2d.point import *
 
 
-l1 = [Point(3,1), Point(0, 0), Point(5,2)]
+l = list(map(lambda i: Point(i, i*i), range(-5,6)))
+
+l2 = list(filter(lambda p: p.y % 2 == 0, l))
 
 
-lw = sorted(l1, key=lambda p: p.distance(Point(0, 0)))
-print(l1)
-print(lw)
+print(l)
+print(l2)
