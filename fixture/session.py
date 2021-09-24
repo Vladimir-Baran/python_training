@@ -33,11 +33,11 @@ class SessionHelper:
         wd = self.app.wd
         return wd.find_element_by_xpath("//div/div[1]/form/b").text == "("+login.username+")"
 
-    def ensure_login(self, username):
+    def ensure_login(self, login):
         wd = self.app.wd
         if self.is_logged_in():
-            if self.is_logged_in_as(username):
+            if self.is_logged_in_as(login):
                 return
             else:
                 self.logout()
-        self.login(username)
+        self.login(login)
