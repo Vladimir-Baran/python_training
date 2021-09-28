@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import Select
+from model.contact import Contact
 
 class ContactHelper:
 
@@ -18,6 +19,7 @@ class ContactHelper:
         wd.find_element_by_link_text("add new").click()
         self.change_data(new_client)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.contact_cache = None
 
     def change_contact_field_value(self, field_name, text):
         wd = self.app.wd
@@ -50,6 +52,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//td[8]/a/img").click()
         self.change_data(client)
         wd.find_element_by_name("update").click()
+        self.contact_cache = None
 
     def delete_first(self):
         wd = self.app.wd
@@ -57,9 +60,23 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        self.contact_cache = None
 
     def count_contact(self):
         wd = self.app.wd
         self.open_start_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    contact_cache = None
+
+    def get_contact_list(self):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_start_page()
+            self.contact_cache = []
+            for element in wd.find_elements_by_css_selector("tr.odd"):
+                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cache.append(Contact(firstname=text, middlename=text, id=id))
+        return list(self.contact_cache)
 
