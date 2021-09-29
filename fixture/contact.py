@@ -45,22 +45,35 @@ class ContactHelper:
         self.change_contact_field_value("mobile", client.mobile)
         self.change_contact_field_value("fax", client.fax)
 
-    def edit_first_contact(self, client):
+    def edit_first_contact(self):
+        self.modify_contact_by_index(0)
+        self.contact_cache = None
+
+    def modify_contact_by_index(self, index, client):
         wd = self.app.wd
         self.open_start_page()
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         wd.find_element_by_xpath("//td[8]/a/img").click()
         self.change_data(client)
         wd.find_element_by_name("update").click()
         self.contact_cache = None
 
     def delete_first(self):
+        self.delete_contact_by_index(0)
+        self.contact_cache = None
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.open_start_page()
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
+        # wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         self.contact_cache = None
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def count_contact(self):
         wd = self.app.wd
@@ -74,7 +87,7 @@ class ContactHelper:
             wd = self.app.wd
             self.open_start_page()
             self.contact_cache = []
-            for element in wd.find_elements_by_css_selector("tr.odd"):
+            for element in wd.find_elements_by_name("td"):
                 text = element.text
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 self.contact_cache.append(Contact(firstname=text, middlename=text, id=id))

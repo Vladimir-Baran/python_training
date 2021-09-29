@@ -1,4 +1,5 @@
 from model.group import Group
+from random import randrange
 
 
 def test_add_group(app):
