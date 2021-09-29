@@ -69,6 +69,7 @@ class ContactHelper:
         # wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        wd.find_element_by_css_selector("div.msgbox")
         self.contact_cache = None
 
     def select_contact_by_index(self, index):
@@ -87,9 +88,11 @@ class ContactHelper:
             wd = self.app.wd
             self.open_start_page()
             self.contact_cache = []
-            for element in wd.find_elements_by_name("td"):
-                text = element.text
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contact_cache.append(Contact(firstname=text, middlename=text, id=id))
+            for element in wd.find_elements_by_css_selector("tr")[1:]:
+                cells = element.find_elements_by_tag_name("td")
+                text1 = cells[1].text
+                text2 = cells[2].text
+                id = cells[0].find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cache.append(Contact(lastname=text1, firstname=text2, id=id))
         return list(self.contact_cache)
 
