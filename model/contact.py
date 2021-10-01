@@ -3,7 +3,8 @@ from sys import maxsize
 class Contact:
 
     def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, company=None, address=None, home_number=None,
-                 bday=None, bmonth=None, byear=None, mobile=None, fax=None, id=None, work=None, all_phone_from_home_page = None):
+                 bday=None, bmonth=None, byear=None, mobile=None, fax=None, id=None, work=None, all_phone_from_home_page = None,
+                 mail=None, all_email_from_home_page=None, email=None, email2=None, email3=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -19,6 +20,10 @@ class Contact:
         self.id = id
         self.work = work
         self.all_phone_from_home_page = all_phone_from_home_page
+        self.email = email
+        self.all_email_from_home_page = all_email_from_home_page
+        self.email2 = email2
+        self.email3 = email3
 
     def id_or_max(self):
         if self.id:
@@ -27,9 +32,9 @@ class Contact:
             return maxsize
 
     def __repr__(self):
-        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.id, self.firstname, self.middlename, self.company, self.fax,
+        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.id, self.firstname, self.middlename, self.company, self.fax,
                             self.mobile, self.byear, self.bmonth, self.bday, self.home_number,
-                            self.address, self.nickname, self.lastname, self.work)
+                            self.address, self.nickname, self.lastname, self.work, self.email, self.email2, self.email3)
 
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) \
@@ -45,4 +50,7 @@ class Contact:
                and (self.byear is None or other.byear is None or self.byear == other.byear)  \
                and (self.mobile is None or other.mobile is None or self.mobile == other.mobile)   \
                and (self.fax is None or other.fax is None or self.fax == other.fax)   \
-               and (self.work is None or other.work is None or self.work == other.work)
+               and (self.work is None or other.work is None or self.work == other.work)   \
+               and (self.email is None or other.email is None or self.email == other.email)   \
+               and (self.email2 is None or other.email2 is None or self.email2 == other.email2)   \
+               and (self.email3 is None or other.email3 is None or self.email3 == other.email3)
