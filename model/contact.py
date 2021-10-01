@@ -4,7 +4,7 @@ class Contact:
 
     def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, company=None, address=None, home_number=None,
                  bday=None, bmonth=None, byear=None, mobile=None, fax=None, id=None, work=None, all_phone_from_home_page = None,
-                 mail=None, all_email_from_home_page=None, email=None, email2=None, email3=None):
+                 all_email_from_home_page=None, email=None, email2=None, email3=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -32,9 +32,11 @@ class Contact:
             return maxsize
 
     def __repr__(self):
-        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.id, self.firstname, self.middlename, self.company, self.fax,
-                            self.mobile, self.byear, self.bmonth, self.bday, self.home_number,
-                            self.address, self.nickname, self.lastname, self.work, self.email, self.email2, self.email3)
+        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (
+             self.firstname, self.middlename, self.company,
+            self.fax, self.mobile, self.byear, self.bmonth, self.bday, self.home_number, self.work, self.id,
+            self.address, self.nickname, self.lastname, self.email, self.email2, self.email3
+        )
 
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) \
