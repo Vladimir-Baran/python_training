@@ -4,7 +4,7 @@ class Contact:
 
     def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, company=None, address=None, home_number=None,
                  bday=None, bmonth=None, byear=None, mobile=None, fax=None, id=None, work=None, all_phone_from_home_page = None,
-                 all_email_from_home_page=None, email=None, email2=None, email3=None):
+                 all_email_from_home_page=None, email=None, email2=None, email3=None, phone2=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -24,6 +24,7 @@ class Contact:
         self.all_email_from_home_page = all_email_from_home_page
         self.email2 = email2
         self.email3 = email3
+        self.phone2 = phone2
 
     def id_or_max(self):
         if self.id:
@@ -32,10 +33,10 @@ class Contact:
             return maxsize
 
     def __repr__(self):
-        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (
+        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (
              self.firstname, self.middlename, self.company,
             self.fax, self.mobile, self.byear, self.bmonth, self.bday, self.home_number, self.work, self.id,
-            self.address, self.nickname, self.lastname, self.email, self.email2, self.email3
+            self.address, self.nickname, self.lastname, self.email, self.email2, self.email3, self.phone2
         )
 
     def __eq__(self, other):
@@ -55,4 +56,5 @@ class Contact:
                and (self.work is None or other.work is None or self.work == other.work)   \
                and (self.email is None or other.email is None or self.email == other.email)   \
                and (self.email2 is None or other.email2 is None or self.email2 == other.email2)   \
-               and (self.email3 is None or other.email3 is None or self.email3 == other.email3)
+               and (self.email3 is None or other.email3 is None or self.email3 == other.email3)   \
+               and (self.phone2 is None or other.phone2 is None or self.phone2 == other.phone2)
