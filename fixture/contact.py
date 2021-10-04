@@ -20,6 +20,7 @@ class ContactHelper:
         wd.find_element_by_link_text("add new").click()
         self.change_data(new_client)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.open_start_page()
         self.contact_cache = None
 
     def change_contact_field_value(self, field_name, text):
@@ -52,6 +53,7 @@ class ContactHelper:
         self.random_modify(index)
         self.change_data(client)
         wd.find_element_by_name("update").click()
+        self.open_start_page()
         self.contact_cache = None
 
     def random_modify(self, index):
@@ -71,6 +73,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         wd.find_element_by_css_selector("div.msgbox")
+        self.open_start_page()
         self.contact_cache = None
 
     def select_contact_by_index(self, index):
@@ -105,9 +108,9 @@ class ContactHelper:
                                                   ))
         return list(self.contact_cache)
 
-    def list_contact(self):
-        wd = self.app.wd
-        return list.count(wd.find_elements_by_name("entry"))
+    # def list_contact(self):
+    #     wd = self.app.wd
+    #     count()
 
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
