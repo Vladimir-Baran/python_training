@@ -105,6 +105,10 @@ class ContactHelper:
                                                   ))
         return list(self.contact_cache)
 
+    def list_contact(self):
+        wd = self.app.wd
+        return list.count(wd.find_elements_by_name("entry"))
+
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
         self.open_start_page()

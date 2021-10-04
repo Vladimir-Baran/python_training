@@ -10,14 +10,14 @@ def random_string(prefix, maxlen):
 
 def random_number(maxlen):
     symbol = string.digits
-    return "".join([random.choice(symbol) for i in range(random.randrange(maxlen))])
+    return "7".join([random.choice(symbol) for i in range(random.randrange(maxlen))])
 
 
-testdatacontact = [Contact(firstname = "", middlename="", lastname="", nickname="", company="", address="",
+testdatacontact = [Contact(firstname="", middlename="", lastname="", nickname="", company="", address="",
             home_number="", mobile="", fax="")] + [Contact(
-    firstname=random_string("firstname", 10), middlename=random_string("header", 20), lastname=random_string("lastname", 20),
-    nickname=random_string("nick", 20), company=random_string("company", 20), address=random_string("address", 20),
-    home_number=random_number(11), mobile=random_number(11), fax=random_number(11)) for i in range(5)]
+    firstname=random_string("firs", 10), middlename=random_string("header", 10), lastname=random_string("lastname", 10),
+    nickname=random_string("nick", 10), company=random_string("company", 10), address=random_string("address", 10),
+    home_number=random_number(11), mobile=random_number(11), fax=random_number(11)) for i in range(3)]
     # for firstname in ["", random_string("firstname", 10)]
     # for middlename in ["", random_string("header", 20)]
     # for lastname in ["", random_string("lastname", 20)]
