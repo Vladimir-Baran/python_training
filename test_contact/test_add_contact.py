@@ -2,10 +2,10 @@ from model.contact import Contact
 import random
 import string
 import pytest
-
+import time
 
 def random_string(prefix, maxlen):
-    symbol = string.ascii_letters + string.digits + string.punctuation + " "*10
+    symbol = string.ascii_letters + string.digits
     return prefix + "".join([random.choice(symbol) for i in range(random.randrange(maxlen))])
 
 def random_number(maxlen):
@@ -13,21 +13,21 @@ def random_number(maxlen):
     return "".join([random.choice(symbol) for i in range(random.randrange(maxlen))])
 
 
-testdatacontact = [
-    Contact(
-        firstname=firstname, middlename=middlename, lastname=lastname, nickname=nick, company=company, address=address,
-            home_number=home_number, mobile=mobile,
-        fax=fax)
-    for firstname in ["", random_string("firstname", 10)]
-    for middlename in ["", random_string("header", 20)]
-    for lastname in ["", random_string("lastname", 20)]
-    for nick in ["", random_string("nick", 20)]
-    for company in ["", random_string("company", 20)]
-    for address in ["", random_string("address", 20)]
-    for home_number in ["", random_number(11)]
-    for mobile in ["", random_number(11)]
-    for fax in ["", random_number(11)]
-]
+testdatacontact = [Contact(firstname = "", middlename="", lastname="", nickname="", company="", address="",
+            home_number="", mobile="", fax="")] + [Contact(
+    firstname=random_string("firstname", 10), middlename=random_string("header", 20), lastname=random_string("lastname", 20),
+    nickname=random_string("nick", 20), company=random_string("company", 20), address=random_string("address", 20),
+    home_number=random_number(11), mobile=random_number(11), fax=random_number(11)) for i in range(5)]
+    # for firstname in ["", random_string("firstname", 10)]
+    # for middlename in ["", random_string("header", 20)]
+    # for lastname in ["", random_string("lastname", 20)]
+    # for nick in ["", random_string("nick", 20)]
+    # for company in ["", random_string("company", 20)]
+    # for address in ["", random_string("address", 20)]
+    # for home_number in ["", random_number(11)]
+    # for mobile in ["", random_number(11)]
+    # for fax in ["", random_number(11)]
+# ]
 
 @pytest.mark.parametrize("contact", testdatacontact, ids=[repr(x) for x in testdatacontact])
 def test_add_new_contact(app, contact):

@@ -1,8 +1,12 @@
 import re
+from model.contact import Contact
 
 def test_all_info_on_home_page(app):
-    contact_from_home_page = app.contact.get_contact_list()[2]
-    contact_from_edit_page = app.contact.get_contact_info_from_edit_page(2)
+    if app.contact.count_contact() == 0:
+        app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
+                                    mobile="328744653263", phone2="87439847362"))
+    contact_from_home_page = app.contact.get_contact_list()[1]
+    contact_from_edit_page = app.contact.get_contact_info_from_edit_page(1)
     assert contact_from_home_page.all_phone_from_home_page == merge_phones_like_on_home_page(contact_from_edit_page)
     assert contact_from_home_page.all_email_from_home_page == merge_email_like_on_home_page(contact_from_edit_page)
     assert contact_from_home_page.lastname == contact_from_edit_page.lastname
@@ -10,6 +14,9 @@ def test_all_info_on_home_page(app):
     assert contact_from_home_page.address == contact_from_edit_page.address
 
 def test_phones_on_contact_view_page(app):
+    if app.contact.count_contact() == 0:
+        app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
+                                    mobile="328744653263", phone2="87439847362"))
     contact_from_view_page = app.contact.get_contact_from_view_page(0)
     contact_from_edit_page = app.contact.get_contact_info_from_edit_page(0)
     assert contact_from_view_page.home_number == contact_from_edit_page.home_number
@@ -19,9 +26,6 @@ def test_phones_on_contact_view_page(app):
 def clear(s):
     return re.sub("[ () -]", "", s)
 
-def clear_for_email(s):
-    return re.sub("[()]", "", s)
-
 def merge_phones_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
                             map(lambda x: clear(x),
@@ -30,8 +34,7 @@ def merge_phones_like_on_home_page(contact):
 
 def merge_email_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
-                            map(lambda x: clear_for_email(x),
-                                filter(lambda x: x is not None,
-                                       [contact.email, contact.email2, contact.email3]))))
+                            filter(lambda x: x is not None,
+                                       [contact.email, contact.email2, contact.email3])))
 
 

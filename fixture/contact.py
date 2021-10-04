@@ -68,7 +68,6 @@ class ContactHelper:
         wd = self.app.wd
         self.open_start_page()
         self.select_contact_by_index(index)
-        # wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         wd.find_element_by_css_selector("div.msgbox")
