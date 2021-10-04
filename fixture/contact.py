@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 import re
+import random
 
 class ContactHelper:
 
@@ -108,9 +109,13 @@ class ContactHelper:
                                                   ))
         return list(self.contact_cache)
 
-    # def list_contact(self):
-    #     wd = self.app.wd
-    #     count()
+    def list_contact(self):
+        wd = self.app.wd
+        self.open_start_page()
+        count = 1
+        for x in wd.find_elements_by_name("entry"):
+            count = count + 1
+        return random.randint(0, count)
 
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
