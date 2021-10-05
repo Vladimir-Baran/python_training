@@ -3,6 +3,8 @@ import pytest
 from model.login import Login
 import json
 import os.path
+import importlib
+import jsonpickle
 
 fixture = None
 target = None
@@ -32,3 +34,21 @@ def stop(request):
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
     parser.addoption("--target", action="store", default="target.json")
+
+def pytest_generate_tests(metafunc):
+    for fixture in metafunc.fixturenames:
+        if fixture.startswith("data_"):
+            testdata = load_form_module(fixture[5:])
+            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+        elif fixture.startswith("json"):
+            testdata = load_form_json(fixture[5:])
+            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+
+
+def load_form_module(module):
+    return importlib.import_module("data.%s" % module).testdata
+
+def load_form_json(file):
+    with open (os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
+        return jsonpickle.decode(f.read())
+
