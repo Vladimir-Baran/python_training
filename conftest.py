@@ -61,6 +61,6 @@ def load_form_json(file):
         return jsonpickle.decode(q.read())
 
 def load_form_json_contact(file):
-    with open (os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
+    with open (os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/contacts.json")) as f:
         return jsonpickle.decode(f.read())
 
