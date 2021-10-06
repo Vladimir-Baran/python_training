@@ -5,7 +5,7 @@ def test_all_info_on_home_page(app):
     if app.contact.count_contact() == 0:
         app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
                                     mobile="328744653263", phone2="87439847362"))
-    random_index = app.contact.list_contact()
+    random_index = app.contact.random_contact_index()
     contact_from_home_page = app.contact.get_contact_list()[random_index]
     contact_from_edit_page = app.contact.get_contact_info_from_edit_page(random_index)
     assert contact_from_home_page.all_phone_from_home_page == merge_phones_like_on_home_page(contact_from_edit_page)
