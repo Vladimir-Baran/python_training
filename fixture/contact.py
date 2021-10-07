@@ -110,13 +110,7 @@ class ContactHelper:
         return list(self.contact_cache)
 
     def random_contact_index(self):
-        # wd = self.app.wd
-        # self.open_start_page()
-        # count = 1
-        # for x in wd.find_elements_by_name("entry"):
-        #     count = count + 1
-        # return random.randint(1, count)
-        return random.randrange(len(self.get_contact_list()))
+        return random.randrange(self.count_contact())
 
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
