@@ -64,7 +64,7 @@ def pytest_generate_tests(metafunc):
         elif fixture.startswith("json_groups"):
             testdata = load_form_json(fixture[5:])
             metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
-        elif fixture.startswith("json_contact"):
+        elif fixture.startswith("json_contacts"):
             testdatacontact = load_form_json_contact(fixture[5:])
             metafunc.parametrize(fixture, testdatacontact, ids=[str(x) for x in testdatacontact])
 

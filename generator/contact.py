@@ -35,7 +35,7 @@ testdatacontact = [Contact(firstname="", middlename="", lastname="", nickname=""
             home_number="78888888888", mobile="88888888888", fax="99999999999")] + [Contact(
     firstname=random_string("firs", 10), middlename=random_string("header", 10), lastname=random_string("lastname", 10),
     nickname=random_string("nick", 10), company=random_string("company", 10), address=random_string("address", 10),
-    home_number=random_number(11), mobile=random_number(11), fax=random_number(11)) for i in range(3)]
+    home_number=random_number(11), mobile=random_number(11), fax=random_number(11)) for i in range(5)]
     # for firstname in ["", random_string("firstname", 10)]
     # for middlename in ["", random_string("header", 20)]
     # for lastname in ["", random_string("lastname", 20)]
