@@ -1,5 +1,3 @@
-import random
-
 from model.group import Group
 import random
 

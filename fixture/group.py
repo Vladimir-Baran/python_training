@@ -42,6 +42,7 @@ class GroupHelper:
         self.fill_group_form(new_group_data)
         # submit modification
         wd.find_element_by_name("update").click()
+        wd.find_element_by_css_selector("div.msgbox")
         self.group_cache = None
 
     def modify_group_by_db(self, id, new_group_data):
@@ -54,6 +55,7 @@ class GroupHelper:
         self.fill_group_form(new_group_data)
         # submit modification
         wd.find_element_by_name("update").click()
+        wd.find_element_by_css_selector("div.msgbox")
         self.group_cache = None
 
     def edit_group(self, group):
@@ -84,6 +86,7 @@ class GroupHelper:
         self.select_group_by_index(index)
         #submit deletion
         wd.find_element_by_name("delete").click()
+        wd.find_element_by_css_selector("div.msgbox")
         self.group_cache = None
 
     def delete_group_by_id(self, id):
@@ -92,6 +95,7 @@ class GroupHelper:
         self.select_group_by_id(id)
         #submit deletion
         wd.find_element_by_name("delete").click()
+        wd.find_element_by_css_selector("div.msgbox")
         self.group_cache = None
 
     def select_group_by_index(self, index):
