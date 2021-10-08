@@ -75,7 +75,7 @@ def load_form_module(module):
     return importlib.import_module("data.%s" % module).testdata
 
 def load_form_json(file):
-    with open (os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as q:
+    with open (os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/groups.json")) as q:
         return jsonpickle.decode(q.read())
 
 def load_form_json_contact(file):
