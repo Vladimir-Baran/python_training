@@ -58,11 +58,25 @@ class ContactHelper:
         self.open_start_page()
         self.contact_cache = None
 
+    def modify_contact_by_id(self, id, client):
+        wd = self.app.wd
+        self.open_start_page()
+        self.random_modify_id(id)
+        self.change_data(client)
+        wd.find_element_by_name("update").click()
+        wd.find_element_by_css_selector("div.msgbox")
+        self.open_start_page()
+        self.contact_cache = None
+
     def random_modify(self, index):
         wd = self.app.wd
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
+
+    def random_modify_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("[href='edit.php?id=%s']" % id).click()
 
     def delete_first(self):
         self.delete_contact_by_index(0)
