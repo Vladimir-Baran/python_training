@@ -32,7 +32,7 @@ def random_number(maxlen):
 
 
 testdatacontact = [Contact(firstname="", middlename="", lastname="", nickname="", company="", address="",
-            home_number="78888888888", mobile="88888888888", fax="99999999999")] + [Contact(
+            home_number="78888888888", mobile="88888888888", fax="99999999999", work="78475746583", phone2="7283472873723")] + [Contact(
     firstname=random_string("firs", 10), middlename=random_string("header", 10), lastname=random_string("lastname", 10),
     nickname=random_string("nick", 10), company=random_string("company", 10), address=random_string("address", 10),
     home_number=random_number(11), mobile=random_number(11), fax=random_number(11)) for i in range(5)]

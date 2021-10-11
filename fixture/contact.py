@@ -43,6 +43,8 @@ class ContactHelper:
         self.change_contact_field_value("byear", client.byear)
         self.change_contact_field_value("mobile", client.mobile)
         self.change_contact_field_value("fax", client.fax)
+        self.change_contact_field_value("work", client.work)
+        self.change_contact_field_value("phone2", client.phone2)
 
     def edit_first_contact(self):
         self.modify_contact_by_index(0)

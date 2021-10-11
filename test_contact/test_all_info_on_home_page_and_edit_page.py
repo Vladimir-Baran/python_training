@@ -1,8 +1,8 @@
 import re
 from model.contact import Contact
 
-def test_all_info_on_home_page(app):
-    if app.contact.count_contact() == 0:
+def test_all_info_on_home_page(app, db):
+    if db.get_contact_list() == 0:
         app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
                                     mobile="328744653263", phone2="87439847362"))
     random_index = app.contact.random_contact_index()
@@ -14,8 +14,16 @@ def test_all_info_on_home_page(app):
     assert contact_from_home_page.firstname == contact_from_edit_page.firstname
     assert contact_from_home_page.address == contact_from_edit_page.address
 
-def test_phones_on_contact_view_page(app):
-    if app.contact.count_contact() == 0:
+def test_all_info_on_home_page_and_db(app, db):
+    if db.get_contact_list() == 0:
+        app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
+                                    mobile="328744653263", phone2="87439847362"))
+    contact_from_home_page = db.get_contact_list()
+    contact_from_bd = app.contact.get_contact_list()
+    assert sorted(contact_from_home_page, key=Contact.id_or_max) == sorted(contact_from_bd, key=Contact.id_or_max)
+
+def test_phones_on_contact_view_page(app, db):
+    if db.get_contact_list() == 0:
         app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
                                     mobile="328744653263", phone2="87439847362"))
     contact_from_view_page = app.contact.get_contact_from_view_page(0)
