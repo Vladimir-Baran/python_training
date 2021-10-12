@@ -4,7 +4,7 @@ class Contact:
 
     def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, company=None, address=None, home_number=None,
                  bday=None, bmonth=None, byear=None, mobile=None, fax=None, id=None, work=None, all_phone_from_home_page = None,
-                 all_email_from_home_page=None, email=None, email2=None, email3=None, phone2=None):
+                 all_email_from_home_page=None, email=None, email2=None, email3=None, phone2=None, new_group=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -25,6 +25,7 @@ class Contact:
         self.email2 = email2
         self.email3 = email3
         self.phone2 = phone2
+        self.new_group = new_group
 
     def id_or_max(self):
         if self.id:

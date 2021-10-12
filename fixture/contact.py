@@ -70,6 +70,31 @@ class ContactHelper:
         self.open_start_page()
         self.contact_cache = None
 
+    def add_in_group(self, id):
+        wd = self.app.wd
+        self.open_start_page()
+        self.random_checkbox(id)
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text("test")
+        wd.find_element_by_name("add").click()
+        wd.find_element_by_css_selector("div.msgbox")
+        self.open_start_page()
+
+    def del_in_group(self, id):
+        wd = self.app.wd
+        self.open_start_page()
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_name("group")).select_by_visible_text("test")
+        self.random_checkbox(id)
+        wd.find_element_by_name("remove").click()
+        wd.find_element_by_css_selector("div.msgbox")
+        self.open_start_page()
+
+
+    def random_checkbox(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+
     def random_modify(self, index):
         wd = self.app.wd
         row = wd.find_elements_by_name("entry")[index]

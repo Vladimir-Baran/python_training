@@ -1,6 +1,5 @@
 from model.group import Group
 import random
-from random import randrange
 
 
 def test_modify_group_header(app, db, check_ui):
