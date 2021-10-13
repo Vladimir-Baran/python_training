@@ -4,7 +4,7 @@ from model.contact import Contact
 import random
 
 def test_del(app, check_ui, db):
-    if db.get_contact_list() == 0:
+    if len(db.get_contact_list()) == 0:
         app.contact.add_new(Contact(firstname="first", bday="7", bmonth="April"))
     old_contact = db.get_contact_list()
     content = random.choice(old_contact)

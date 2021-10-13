@@ -142,6 +142,11 @@ class ContactHelper:
         self.open_start_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    def count_contact_id(self, id):
+        wd = self.app.wd
+        self.open_start_page()
+        return len(wd.find_element_by_css_selector("input[value='%s']" % id))
+
     contact_cache = None
 
     def get_contact_list(self):
