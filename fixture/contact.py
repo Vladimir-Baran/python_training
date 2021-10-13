@@ -72,13 +72,20 @@ class ContactHelper:
 
     def add_in_group(self, id):
         wd = self.app.wd
-        self.open_start_page()
+        self.open_none_group()
         self.random_checkbox(id)
         wd.find_element_by_name("to_group").click()
         Select(wd.find_element_by_name("to_group")).select_by_visible_text("test")
         wd.find_element_by_name("add").click()
         wd.find_element_by_css_selector("div.msgbox")
         self.open_start_page()
+
+    def open_none_group(self):
+        wd = self.app.wd
+        self.open_start_page()
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_name("group")).select_by_visible_text("[none]")
+
 
     def del_in_group(self, id):
         wd = self.app.wd
