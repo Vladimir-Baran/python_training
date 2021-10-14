@@ -15,20 +15,18 @@ def test_all_info_on_home_page(app, db):
     assert contact_from_home_page.address == contact_from_edit_page.address
 
 def test_all_info_on_home_page_and_db(app, db):
-    if db.get_contact_list() == 0:
+    if len(db.get_contact_list()) == 0:
         app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
                                     mobile="328744653263", phone2="87439847362"))
-    index = app.contact.count_contact_id()
-    if index != 0:
+    if len(db.get_contact_list()) >= 1:
+        index = app.contact.count_contact_id(id)
         contact_from_home_page = app.contact.get_contact_list()[index]
         contact_from_bd = db.get_contact_list_all(index)
-        assert sorted(contact_from_home_page, key=Contact.id_or_max) == sorted(contact_from_bd, key=Contact.id_or_max)
         assert contact_from_home_page.all_phone_from_home_page == merge_phones_like_on_home_page(contact_from_bd)
         assert contact_from_home_page.all_email_from_home_page == merge_email_like_on_home_page(contact_from_bd)
         assert contact_from_home_page.lastname == contact_from_bd.lastname
         assert contact_from_home_page.firstname == contact_from_bd.firstname
         assert contact_from_home_page.address == contact_from_bd.address
-        index = index + 1
 
 def test_phones_on_contact_view_page(app, db):
     if db.get_contact_list() == 0:

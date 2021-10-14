@@ -152,7 +152,7 @@ class ContactHelper:
     def count_contact_id(self, id):
         wd = self.app.wd
         self.open_start_page()
-        return len(wd.find_element_by_css_selector("input[value='%s']" % id))
+        wd.find_element_by_css_selector("input[value='%s']" % id)
 
     contact_cache = None
 
