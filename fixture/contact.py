@@ -53,7 +53,7 @@ class ContactHelper:
     def modify_contact_by_index(self, index, client):
         wd = self.app.wd
         self.open_start_page()
-        self.random_modify(index)
+        self.modify_index(index)
         self.change_data(client)
         wd.find_element_by_name("update").click()
         wd.find_element_by_css_selector("div.msgbox")
@@ -63,7 +63,7 @@ class ContactHelper:
     def modify_contact_by_id(self, id, client):
         wd = self.app.wd
         self.open_start_page()
-        self.random_modify_id(id)
+        self.modify_id(id)
         self.change_data(client)
         wd.find_element_by_name("update").click()
         wd.find_element_by_css_selector("div.msgbox")
@@ -73,7 +73,7 @@ class ContactHelper:
     def add_in_group(self, id):
         wd = self.app.wd
         self.open_none_group()
-        self.random_checkbox(id)
+        self.select_checkbox_id(id)
         wd.find_element_by_name("to_group").click()
         Select(wd.find_element_by_name("to_group")).select_by_visible_text("test")
         wd.find_element_by_name("add").click()
@@ -86,29 +86,34 @@ class ContactHelper:
         wd.find_element_by_name("group").click()
         Select(wd.find_element_by_name("group")).select_by_visible_text("[none]")
 
+    def open_test_group(self):
+        wd = self.app.wd
+        self.open_start_page()
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_name("group")).select_by_visible_text("test")
 
     def del_in_group(self, id):
         wd = self.app.wd
         self.open_start_page()
         wd.find_element_by_name("group").click()
         Select(wd.find_element_by_name("group")).select_by_visible_text("test")
-        self.random_checkbox(id)
+        self.select_checkbox_id(id)
         wd.find_element_by_name("remove").click()
         wd.find_element_by_css_selector("div.msgbox")
         self.open_start_page()
 
 
-    def random_checkbox(self, id):
+    def select_checkbox_id(self, id):
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
-    def random_modify(self, index):
+    def modify_index(self, index):
         wd = self.app.wd
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
 
-    def random_modify_id(self, id):
+    def modify_id(self, id):
         wd = self.app.wd
         wd.find_element_by_css_selector("[href='edit.php?id=%s']" % id).click()
 
@@ -161,6 +166,48 @@ class ContactHelper:
         entry = wd.find_elements_by_name("entry")
         if self.contact_cache is None:
             self.open_start_page()
+            self.contact_cache = []
+            for element in entry:
+                cells = element.find_elements_by_tag_name("td")
+                lastname = cells[1].text
+                firstname = cells[2].text
+                id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                all_phones = cells[5].text
+                address = cells[3].text
+                all_mails = cells[4].text
+                self.contact_cache.append(Contact(lastname=lastname, firstname=firstname, id=id
+                                                  , all_phone_from_home_page=all_phones
+                                                  , address=address
+                                                  , all_email_from_home_page = all_mails
+                                                  ))
+        return list(self.contact_cache)
+
+    def get_contact_list_in_none_group(self):
+        wd = self.app.wd
+        self.open_none_group()
+        entry = wd.find_elements_by_name("entry")
+        if self.contact_cache is None:
+            self.contact_cache = []
+            for element in entry:
+                cells = element.find_elements_by_tag_name("td")
+                lastname = cells[1].text
+                firstname = cells[2].text
+                id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                all_phones = cells[5].text
+                address = cells[3].text
+                all_mails = cells[4].text
+                self.contact_cache.append(Contact(lastname=lastname, firstname=firstname, id=id
+                                                  , all_phone_from_home_page=all_phones
+                                                  , address=address
+                                                  , all_email_from_home_page = all_mails
+                                                  ))
+        return list(self.contact_cache)
+
+    def get_contact_list_in_group(self):
+        wd = self.app.wd
+        self.open_test_group()
+        entry = wd.find_elements_by_name("entry")
+        if self.contact_cache is None:
             self.contact_cache = []
             for element in entry:
                 cells = element.find_elements_by_tag_name("td")

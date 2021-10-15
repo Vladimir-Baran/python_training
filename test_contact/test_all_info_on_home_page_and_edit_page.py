@@ -18,15 +18,15 @@ def test_all_info_on_home_page_and_db(app, db):
     if len(db.get_contact_list()) == 0:
         app.contact.add_new(Contact(firstname="first", home_number="87326352378", work="73652363281",
                                     mobile="328744653263", phone2="87439847362"))
-    if len(db.get_contact_list()) >= 1:
-        index = app.contact.count_contact_id(id)
-        contact_from_home_page = app.contact.get_contact_list()[index]
-        contact_from_bd = db.get_contact_list_all(index)
-        assert contact_from_home_page.all_phone_from_home_page == merge_phones_like_on_home_page(contact_from_bd)
-        assert contact_from_home_page.all_email_from_home_page == merge_email_like_on_home_page(contact_from_bd)
-        assert contact_from_home_page.lastname == contact_from_bd.lastname
-        assert contact_from_home_page.firstname == contact_from_bd.firstname
-        assert contact_from_home_page.address == contact_from_bd.address
+    contact_list_from_bd = sorted(db.get_contact_list_all(), key=Contact.id_or_max)
+    contact_list_from_home_page = sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
+    assert contact_list_from_home_page == contact_list_from_bd
+    number_of_contacts = len(contact_list_from_bd)
+    for index in range(number_of_contacts):
+        contact_list_from_bd[index]
+        contact_list_from_home_page[index]
+        assert contact_list_from_home_page == merge_all_info(contact_list_from_bd)
+
 
 def test_phones_on_contact_view_page(app, db):
     if db.get_contact_list() == 0:
@@ -52,4 +52,16 @@ def merge_email_like_on_home_page(contact):
                             filter(lambda x: x is not None,
                                        [contact.email, contact.email2, contact.email3])))
 
+def merge_all_info(db):
+    return "\n".join(db.lastname, db.firstname, db.id, merge_phones_like_on_db, db.address, merge_email_like_on_db)
 
+def merge_phones_like_on_db(db):
+    return "\n".join(filter(lambda x: x != "",
+                            map(lambda x: clear(x),
+                                filter(lambda x: x is not None,
+                                       [db.home_number, db.mobile, db.work, db.phone2]))))
+
+def merge_email_like_on_db(db):
+    return "\n".join(filter(lambda x: x != "",
+                            filter(lambda x: x is not None,
+                                       [db.email, db.email2, db.email3])))

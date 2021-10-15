@@ -34,13 +34,13 @@ class Contact:
             return maxsize
 
     def __repr__(self):
-        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (
+        return "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (
              self.firstname, self.middlename, self.company,
             self.fax, self.mobile,
              self.byear, self.bmonth, self.bday,
              self.home_number, self.work, self.id,
             self.address, self.nickname, self.lastname,
-             self.email, self.email2, self.email3, self.phone2
+             self.email, self.email2, self.email3, self.phone2, self.all_phone_from_home_page, self.all_email_from_home_page
         )
 
     def __eq__(self, other):
@@ -61,4 +61,8 @@ class Contact:
                and (self.email is None or other.email is None or self.email == other.email)   \
                and (self.email2 is None or other.email2 is None or self.email2 == other.email2)   \
                and (self.email3 is None or other.email3 is None or self.email3 == other.email3)   \
-               and (self.phone2 is None or other.phone2 is None or self.phone2 == other.phone2)
+               and (self.phone2 is None or other.phone2 is None or self.phone2 == other.phone2)   \
+               and (self.all_phone_from_home_page is None or other.all_phone_from_home_page is None
+                    or self.all_phone_from_home_page == other.all_phone_from_home_page)   \
+               and (self.all_email_from_home_page is None or other.all_email_from_home_page is None
+                    or self.all_email_from_home_page == other.all_email_from_home_page)
