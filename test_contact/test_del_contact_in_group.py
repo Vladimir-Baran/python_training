@@ -1,9 +1,7 @@
 from model.group import Group
 from random import randrange
-from model.contact import Contact
 from test_contact import test_add_contact_in_group
-import random
-import string
+
 
 
 def test_del_contact_in_group(app, db):
