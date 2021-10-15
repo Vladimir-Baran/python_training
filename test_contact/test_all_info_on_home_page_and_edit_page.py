@@ -25,8 +25,8 @@ def test_all_info_on_home_page_and_db(app, db):
     for index in range(number_of_contacts):
         bd = contact_list_from_bd[index]
         home = contact_list_from_home_page[index]
-        assert home.all_phone_from_home_page == merge_phones_like_on_db(bd)
-        assert home.all_email_from_home_page == merge_email_like_on_db(bd)
+        assert home.all_phone_from_home_page == merge_phones_like_on_home_page(bd)
+        assert home.all_email_from_home_page == merge_email_like_on_home_page(bd)
         assert home.lastname == bd.lastname
         assert home.firstname == bd.firstname
         assert home.address == bd.address
@@ -56,13 +56,3 @@ def merge_email_like_on_home_page(contact):
                             filter(lambda x: x is not None,
                                        [contact.email, contact.email2, contact.email3])))
 
-def merge_phones_like_on_db(db):
-    return "\n".join(filter(lambda x: x != "",
-                            map(lambda x: clear(x),
-                                filter(lambda x: x is not None,
-                                       [db.home_number, db.mobile, db.work, db.phone2]))))
-
-def merge_email_like_on_db(db):
-    return "\n".join(filter(lambda x: x != "",
-                            filter(lambda x: x is not None,
-                                       [db.email, db.email2, db.email3])))
