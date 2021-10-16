@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 import re
 import random
+from model.group import Group
 
 class ContactHelper:
 
@@ -72,13 +73,25 @@ class ContactHelper:
 
     def add_in_group(self, id):
         wd = self.app.wd
+        self.open_start_page()
+        wd.find_element_by_link_text("groups").click()
+        group = random.choice(self.get_group_value())
         self.open_none_group()
         self.select_checkbox_by_id(id)
         wd.find_element_by_name("to_group").click()
-        Select(wd.find_element_by_name("to_group")).select_by_visible_text("test")
+        Select(wd.find_element_by_name("to_group")).select_by_value(group)
         wd.find_element_by_name("add").click()
         wd.find_element_by_css_selector("div.msgbox")
         self.open_start_page()
+
+    def get_group_value(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("groups").click()
+        group_cache = []
+        for element in wd.find_elements_by_css_selector("span.group"):
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            group_cache.append(id)
+        return list(group_cache)
 
     def open_none_group(self):
         wd = self.app.wd
@@ -164,6 +177,7 @@ class ContactHelper:
 
     def get_contact_list(self):
         wd = self.app.wd
+        self.open_start_page()
         entry = wd.find_elements_by_name("entry")
         if self.contact_cache is None:
             self.open_start_page()
@@ -185,6 +199,7 @@ class ContactHelper:
 
     def get_contact_list_in_none_group(self):
         wd = self.app.wd
+        self.open_start_page()
         self.open_none_group()
         entry = wd.find_elements_by_name("entry")
         if self.contact_cache is None:
@@ -206,6 +221,7 @@ class ContactHelper:
 
     def get_contact_list_in_group(self):
         wd = self.app.wd
+        self.open_start_page()
         self.open_test_group()
         entry = wd.find_elements_by_name("entry")
         if self.contact_cache is None:
@@ -237,6 +253,7 @@ class ContactHelper:
 
     def get_contact_info_from_edit_page(self, index):
         wd = self.app.wd
+        self.open_start_page()
         self.open_contact_to_edit_by_index(index)
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
