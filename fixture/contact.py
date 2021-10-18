@@ -84,8 +84,20 @@ class ContactHelper:
         wd.find_element_by_css_selector("div.msgbox")
         self.open_start_page()
 
+    def del_in_group_by_id(self, id):
+        wd = self.app.wd
+        group = random.choice(self.get_group_value())
+        self.open_start_page()
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_name("group")).select_by_value(group)
+        self.select_checkbox_by_id(id)
+        wd.find_element_by_name("remove").click()
+        wd.find_element_by_css_selector("div.msgbox")
+        self.open_start_page()
+
     def get_group_value(self):
         wd = self.app.wd
+        self.open_start_page()
         wd.find_element_by_link_text("groups").click()
         group_cache = []
         for element in wd.find_elements_by_css_selector("span.group"):
@@ -104,17 +116,6 @@ class ContactHelper:
         self.open_start_page()
         wd.find_element_by_name("group").click()
         Select(wd.find_element_by_name("group")).select_by_visible_text("test")
-
-    def del_in_group_by_id(self, id):
-        wd = self.app.wd
-        self.open_start_page()
-        wd.find_element_by_name("group").click()
-        Select(wd.find_element_by_name("group")).select_by_visible_text("test")
-        self.select_checkbox_by_id(id)
-        wd.find_element_by_name("remove").click()
-        wd.find_element_by_css_selector("div.msgbox")
-        self.open_start_page()
-
 
     def select_checkbox_by_id(self, id):
         wd = self.app.wd
@@ -166,6 +167,10 @@ class ContactHelper:
     def number_of_contacts(self):
         wd = self.app.wd
         self.open_start_page()
+        return len(wd.find_elements_by_name("selected[]"))
+
+    def number_fo_contacts_in_group(self):
+        wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
 
     def number_of_contacts_by_id(self, id):
@@ -221,8 +226,10 @@ class ContactHelper:
 
     def get_contact_list_in_group(self):
         wd = self.app.wd
+        group = random.choice(self.get_group_value())
         self.open_start_page()
-        self.open_test_group()
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_name("group")).select_by_value(group)
         entry = wd.find_elements_by_name("entry")
         if self.contact_cache is None:
             self.contact_cache = []
