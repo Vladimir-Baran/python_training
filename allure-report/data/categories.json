@@ -4,22 +4,39 @@
   "children" : [ {
     "name" : "Product defects",
     "children" : [ {
-      "name" : "AssertionError: assert [firs:None:No...9847362:, ...] == [firs:None:No...one:None, ...]\n  At index 4 diff: random:None:None:None:None:None:None:None:None:None:360::None::None:None:None:None:87326352378\\n328744653263\\n73652363281\\n87439847362: != firs9qekBMa:None:None:None:67774737872:None:None:None:479777177::357:address6uXJYyf:None:lastnamee:::::None:None\n  Right contains one more item: firs9qekBMa:None:None:None:67774737872:None:None:None:479777177::367:address6uXJYyf:None:lastnamee:::::None:None\n  Use -v to get the full diff",
+      "name" : "AssertionError: assert '9707071' == ''\n  + 9707071",
       "children" : [ {
-        "name" : "test_all_info_on_home_page_and_db",
-        "uid" : "c9ce496462a0169b",
-        "parentUid" : "8dac9ee1aa9f899171b2dfe5f3e83e33",
+        "name" : "test_all_info_on_home_page",
+        "uid" : "b424becc22aa09e5",
+        "parentUid" : "9b271f77c9205d7356a94a25bf40695d",
         "status" : "failed",
         "time" : {
-          "start" : 1635256681764,
-          "stop" : 1635256682110,
-          "duration" : 346
+          "start" : 1635258273728,
+          "stop" : 1635258274282,
+          "duration" : 554
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       } ],
-      "uid" : "8dac9ee1aa9f899171b2dfe5f3e83e33"
+      "uid" : "9b271f77c9205d7356a94a25bf40695d"
+    }, {
+      "name" : "AssertionError: assert [firs:None:No...2873723:, ...] == [firs:None:No...one:None, ...]\n  At index 3 diff: random:None:None:None:None:None:None:None:None:None:360::None::None:None:None:None:87326352378\\n328744653263\\n73652363281\\n87439847362: != firsBAiUn:None:None:None:17171787373:None:None:None:5757770::356:address4gOoz1S8F:None:lastname:::::None:None\n  Right contains 2 more items, first extra item: firsBAiUn:None:None:None:17171787373:None:None:None:5757770::372:address4gOoz1S8F:None:lastname:::::None:None\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_all_info_on_home_page_and_db",
+        "uid" : "76c5bbc3a8dc78c6",
+        "parentUid" : "1152576b8b5539736ee09cec8f824828",
+        "status" : "failed",
+        "time" : {
+          "start" : 1635258274497,
+          "stop" : 1635258274897,
+          "duration" : 400
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "1152576b8b5539736ee09cec8f824828"
     } ],
     "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
   }, {
@@ -28,13 +45,13 @@
       "name" : "ValueError: empty range for randrange()",
       "children" : [ {
         "name" : "test_del_contact_in_group",
-        "uid" : "2fc97848e00f1c43",
+        "uid" : "43f1bf108833fc7b",
         "parentUid" : "d38d4e877d8289b96dfd634d09f0fd87",
         "status" : "broken",
         "time" : {
-          "start" : 1635256684406,
-          "stop" : 1635256686812,
-          "duration" : 2406
+          "start" : 1635258277115,
+          "stop" : 1635258279982,
+          "duration" : 2867
         },
         "flaky" : false,
         "newFailed" : false,
