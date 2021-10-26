@@ -5,4 +5,4 @@ jsonpickle
 pony
 pymysql
 lxml
-pytest-allure-adaptor
+allure-pytest
