@@ -1,0 +1,47 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert [firs:None:No...9847362:, ...] == [firs:None:No...one:None, ...]\n  At index 4 diff: random:None:None:None:None:None:None:None:None:None:360::None::None:None:None:None:87326352378\\n328744653263\\n73652363281\\n87439847362: != firs9qekBMa:None:None:None:67774737872:None:None:None:479777177::357:address6uXJYyf:None:lastnamee:::::None:None\n  Right contains one more item: firs9qekBMa:None:None:None:67774737872:None:None:None:479777177::367:address6uXJYyf:None:lastnamee:::::None:None\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_all_info_on_home_page_and_db",
+        "uid" : "c9ce496462a0169b",
+        "parentUid" : "8dac9ee1aa9f899171b2dfe5f3e83e33",
+        "status" : "failed",
+        "time" : {
+          "start" : 1635256681764,
+          "stop" : 1635256682110,
+          "duration" : 346
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "8dac9ee1aa9f899171b2dfe5f3e83e33"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  }, {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "ValueError: empty range for randrange()",
+      "children" : [ {
+        "name" : "test_del_contact_in_group",
+        "uid" : "2fc97848e00f1c43",
+        "parentUid" : "d38d4e877d8289b96dfd634d09f0fd87",
+        "status" : "broken",
+        "time" : {
+          "start" : 1635256684406,
+          "stop" : 1635256686812,
+          "duration" : 2406
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "d38d4e877d8289b96dfd634d09f0fd87"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

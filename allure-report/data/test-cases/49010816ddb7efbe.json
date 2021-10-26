@@ -1,0 +1,149 @@
+{
+  "uid" : "49010816ddb7efbe",
+  "name" : "test_add_new_contact[firs:headerEvUvl:company:9::None:None:None:9707071:None:None:addressodEhnc:nickn:lastnamesr1pFwxZz:None:None:None:None:None:None]",
+  "fullName" : "test_contact.test_add_contact.test_add_new_contact[firs:headerEvUvl:company:9#None:None:None:9707071:None:None:addressodEhnc:nickn:lastnamesr1pFwxZz:None:None:None:None:None:None]",
+  "historyId" : "501c0f63c0d0f2c944144d7519d1eb67",
+  "time" : {
+    "start" : 1635256667735,
+    "stop" : 1635256669226,
+    "duration" : 1491
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "stop",
+    "time" : {
+      "start" : 1635256662957,
+      "stop" : 1635256662957,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1635256662957,
+      "stop" : 1635256662968,
+      "duration" : 11
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1635256667673,
+      "stop" : 1635256667734,
+      "duration" : 61
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1635256667735,
+      "stop" : 1635256667735,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1635256688956,
+      "stop" : 1635256689116,
+      "duration" : 160
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1635256689117,
+      "stop" : 1635256691251,
+      "duration" : 2134
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test_contact"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_contact"
+  }, {
+    "name" : "subSuite",
+    "value" : "test_add_new_contact[firs:headerEvUvl:company:9"
+  }, {
+    "name" : "host",
+    "value" : "0000nbc00106409"
+  }, {
+    "name" : "thread",
+    "value" : "13852-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_contact.test_add_contact"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_contacts",
+    "value" : "firs:headerEvUvl:company:9::None:None:None:9707071:None:None:addressodEhnc:nickn:lastnamesr1pFwxZz:None:None:None:None:None:None"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "49010816ddb7efbe.json",
+  "parameterValues" : [ "firs:headerEvUvl:company:9::None:None:None:9707071:None:None:addressodEhnc:nickn:lastnamesr1pFwxZz:None:None:None:None:None:None" ]
+}
